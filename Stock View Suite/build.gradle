@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.warehouse'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Servlet API dependency
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+    
+    // MySQL Connector/J dependency
+    implementation 'mysql:mysql-connector-java:8.0.29'
+
+    // JSP Support if using JSP files
+    providedCompile 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
+    providedCompile 'javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.0'
+}
+
+// WAR configuration
+war {
+    archiveFileName = 'WarehouseMonitoringSystem.war'
+    webInf {
+        from('src/main/webapp/WEB-INF/web.xml') {
+            into 'WEB-INF'
+        }
+    }
+}
+
+// Configure Java source compatibility
+sourceCompatibility = '1.8' // Change according to your Java version
+targetCompatibility = '1.8'
