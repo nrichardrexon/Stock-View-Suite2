@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id 'war'
+    id 'org.springframework.boot' version '2.7.9' // Add the Spring Boot plugin
+    id 'io.spring.dependency-management' version '1.0.12.RELEASE' // Add dependency management plugin
 }
 
 group 'com.warehouse'
@@ -11,15 +13,18 @@ repositories {
 }
 
 dependencies {
+    // Spring Boot Starter
+    implementation 'org.springframework.boot:spring-boot-starter' // Add Spring Boot starter
+
     // Servlet API dependency
     implementation 'javax.servlet:javax.servlet-api:4.0.1'
-    
+
     // MySQL Connector/J dependency
     implementation 'mysql:mysql-connector-java:8.0.29'
 
     // JSP Support if using JSP files
     providedCompile 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3'
-    providedCompile 'javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.0'
+    providedCompile 'javax.servlet:jstl:1.2' // JSTL dependency
 }
 
 // WAR configuration
